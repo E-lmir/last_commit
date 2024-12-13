@@ -16,7 +16,7 @@ namespace last_commit
 
       var drive = repos.Split(':').FirstOrDefault();
       var executor = new CommandLineExecutor();
-      executor.Execute(drive, $"cd {repos}", $"git fetch --all");
+      executor.Execute(drive, $"cd {repos}", $"git fetch --all -p");
       var branches = executor.Execute($"{drive}:", $"cd {repos}", "git branch -r").Split().Where(x => x.Contains(remote));
       foreach (var branch in branches)
       {
