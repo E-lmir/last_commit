@@ -1,4 +1,5 @@
 using CommandExecutor;
+using System.Text;
 
 namespace last_commit
 {
@@ -24,7 +25,7 @@ namespace last_commit
         if (DateTime.Parse(lastCommit[^1]) < DateTime.Parse(date))
         {
           Console.ForegroundColor = ConsoleColor.Green;
-          File.AppendAllText(path, message + Environment.NewLine, System.Text.Encoding.UTF8);
+          File.AppendAllText(path, message + Environment.NewLine, Encoding.UTF8);
         }
 
         Console.WriteLine(message);
