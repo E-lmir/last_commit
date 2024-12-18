@@ -25,7 +25,7 @@ namespace last_commit
       var branches = ExecuteGitCommand("git branch -r -f").Split().Where(x => x.Contains(remote));
       var noMerghedInMasterBranches = ExecuteGitCommand("git checkout master && git branch -r -f --no-merged").Split().Where(x => x.Contains(remote));
 
-      foreach (var branch in branches)
+      Parallel.ForEach(branches, branch =>
       {
         var lastCommit = ExecuteGitCommand($"git log --pretty=format:\"%ae;%ad\" --date=short -n 1 {branch}").Split(Environment.NewLine)[8].Split(';');
         var message = $"branch:{branch}\tlast commited:{lastCommit[0]}\tat:{lastCommit[^1]}";
@@ -41,7 +41,7 @@ namespace last_commit
 
         Console.WriteLine(message);
         Console.ForegroundColor = ConsoleColor.White;
-      }
+      });
     }
 
     private static string ExecuteGitCommand(string command) => _executor.Execute($"{_drive}:", $"cd {_repos}", command);
