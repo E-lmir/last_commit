@@ -2,7 +2,7 @@
   "profiles": {
     "last_commit": {
       "commandName": "Project",
-      "commandLineArgs": "repos=D:\\core_repos\\Ess.OfficeService date=2024.11.13"
+      "commandLineArgs": "repos=D:\\core_repos\\Ess.OfficeService date=2024.11.15 output=C:\\branches.md"
     }
   }
 }
